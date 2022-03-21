@@ -61,3 +61,11 @@ try:
                     user='[username]',
                     password='[mdp]')
     curs = co.cursor()
+
+
+except(Exception, psy.DatabaseError) as error:
+    print(error)
+
+finally:
+    if co is not None:
+        co.close()
