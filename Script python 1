@@ -1,0 +1,63 @@
+import pandas as pd 
+import psycopg2 as psy
+import matplotlib.pyplot as plt
+
+data1 = pd.read_csv(r'circuits.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data2 = pd.read_csv(r'constructor_results.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data3 = pd.read_csv(r'constructor_standings.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data4 = pd.read_csv(r'constructors.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data5 = pd.read_csv(r'driver_standings.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data6 = pd.read_csv(r'drivers.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data7 = pd.read_csv(r'lap_times.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data8 = pd.read_csv(r'pit_stops.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data9 = pd.read_csv(r'qualifying.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data10 = pd.read_csv(r'races.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data11 = pd.read_csv(r'results.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data12 = pd.read_csv(r'seasons.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+data13 = pd.read_csv(r'status.csv')
+df = pd.DataFrame(data)
+df2 = df.drop_duplicates()
+
+co=None
+try:
+    co = psy.connect(host='berlin',
+                    database='db[username]',
+                    user='[username]',
+                    password='[mdp]')
+    curs = co.cursor()
