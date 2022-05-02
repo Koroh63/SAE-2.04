@@ -87,18 +87,31 @@ try:
                     nom varchar(50),
                     heure numeric(4)
                     );''')
+    
+    for row in df2.itertuples():
+    curs.execute('''INSERT INTO Circuit VALUES (%s,%s,%s,%s);''',                                                                              
+                        (row.Date,row.Round,row.Name,row.Time))
+
+    co.commit()
 
     curs.execute('''CREATE TABLE Constructeur(
                     nom varchar(30) PRIMARY KEY,
                     nationalité varchar(30)
                     );''')
 
+    for row in df2.itertuples():
+    curs.execute('''INSERT INTO Circuit VALUES (%s,%s);''',                                                                              
+                        (row.Name,row.Nationality))
+
+    co.commit()
     
     curs.execute('''CREATE TABLE PitStop(
                     id numeric() PRIMARY KEY,
                     nationalité varchar(30)
                     );''')
+    
 
+    co.commit()
 
 
 
