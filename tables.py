@@ -87,7 +87,7 @@ try:
                     round numeric(2),
                     nom varchar(50),
                     heure numeric(4),
-                    idCircuit numeric(2)
+                    idCircuit numeric(2) REFERENCES Circuit(id)
                     );''')
     
     for row in df2.itertuples():
