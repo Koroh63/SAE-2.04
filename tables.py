@@ -67,7 +67,8 @@ try:
     curs.execute('''DROP TABLE IF EXISTS Circuit;''')
 
     curs.execute('''CREATE TABLE Circuit(
-                    nom varchar(50) PRIMARY KEY,
+                    id  numeric(2) PRIMARY KEY,
+                    nom varchar(50),
                     localisation varchar(50),
                     pays varchar(30),
                     latitude numeric(8,5),
@@ -76,8 +77,8 @@ try:
                     );''')
 
     for row in df2.itertuples():
-    curs.execute('''INSERT INTO Circuit VALUES (%s,%s,%s,%s,%s,%s);''',                                                                              
-                        (row.Name,row.Location,row.Country,row.Lat,row.Lng,row.Alt))
+    curs.execute('''INSERT INTO Circuit VALUES (%s,%s,%s,%s,%s,%s,%s);''',                                                                              
+                        (row.CircuitId,row.Name,row.Location,row.Country,row.Lat,row.Lng,row.Alt))
 
     co.commit()
 
@@ -85,12 +86,13 @@ try:
                     date date PRIMARY KEY,
                     round numeric(2),
                     nom varchar(50),
-                    heure numeric(4)
+                    heure numeric(4),
+                    idCircuit numeric(2)
                     );''')
     
     for row in df2.itertuples():
-    curs.execute('''INSERT INTO Circuit VALUES (%s,%s,%s,%s);''',                                                                              
-                        (row.Date,row.Round,row.Name,row.Time))
+    curs.execute('''INSERT INTO Circuit VALUES (%s,%s,%s,%s,%s);''',                                                                              
+                        (row.Date,row.Round,row.Name,row.Time,row.CircuitId))
 
     co.commit()
 
