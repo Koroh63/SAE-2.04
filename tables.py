@@ -40,7 +40,7 @@ try:
     co = psy.connect(host='berlin',
                     database='dbtilevadoux',
                     user='tilevadoux',
-                    password='Tilouflo*13')
+                    password='')
     curs = co.cursor()
 
     curs.execute('''DROP TABLE IF EXISTS Resultats''')
