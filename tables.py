@@ -160,7 +160,7 @@ try:
                     FOREIGN KEY (courseId) REFERENCES Course (id),
                     FOREIGN KEY (constructeur) REFERENCES Constructeur(constructeurId),
                     FOREIGN KEY (status) REFERENCES Status,
-                    PRIMARY KEY(pilote,courseId,constructeur,status)
+                    PRIMARY KEY(pilote,courseId,numeroVoiture)
                     );''')
 
     for row in df7.itertuples():
