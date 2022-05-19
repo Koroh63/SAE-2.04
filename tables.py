@@ -1,6 +1,7 @@
 import pandas as pd 
 import psycopg2 as psy
 import matplotlib.pyplot as plt
+import numpy as np
 
 data1 = pd.read_csv(r'circuits.csv')
 df = pd.DataFrame(data1)
@@ -29,7 +30,7 @@ df6 = df.drop_duplicates()
 data7 = pd.read_csv(r'results.csv')
 df = pd.DataFrame(data7)
 df7 = df.drop_duplicates()
-df7["fastestLap"].fillna("NaN",inplace = True)
+df7 = df7.fillna(0)
 
 data8 = pd.read_csv(r'status.csv')
 df = pd.DataFrame(data8)
@@ -86,7 +87,7 @@ try:
                     prenom varchar(30),
                     nom varchar(30),
                     dateNaissance date,
-                    nationalité varchar(30)
+                    nationalite varchar(30)
                     );''')
 
     for row in df3.itertuples():
@@ -141,19 +142,21 @@ try:
 
     co.commit()
 
+    print(df7)
+
     curs.execute('''CREATE TABLE Resultats(
                     pilote numeric(3),
                     courseId numeric(4),
-                    numeroVoiture varchar(3),
+                    numeroVoiture numeric(3),
                     positionGrille numeric(2),
-                    positionFinale varchar(2),
+                    positionFinale numeric(2),
                     points numeric(2),
                     nbTours numeric(3),
-                    tempsMilli varchar(8),
-                    meilleurTour varchar(3),
-                    rangMeilleurTour varchar(2),
+                    tempsMilli numeric(8),
+                    meilleurTour numeric(3),
+                    rangMeilleurTour numeric(2),
                     tempsMeilleurTour varchar(8),
-                    vitesseMaxMeilleurTour varchar(7),
+                    vitesseMaxMeilleurTour numeric(7),
                     constructeur numeric(3),
                     status numeric(3),
                     FOREIGN KEY (pilote) REFERENCES Pilotes(reference),
